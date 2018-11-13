@@ -1,0 +1,32 @@
+<div class="new-question-container">
+  <h1>Create a new question</h1>
+  <form action="post" {{action "submitForm" on="submit"}}>
+    <label for="question-text"> Question Text
+      {{textarea type="text" name="question-text" value=text placeholder="Add question text here"}}
+      {{!-- <textarea name="question-text" id="" cols="100" rows="10" placeholder="Add question text here"/> --}}
+    </label>
+    
+    <label for="answer-A">
+      Answer A
+      {{input type="text" value=answer-A placeholder="answer-A"}}
+    </label>
+    <label for="answer-B">
+      Answer B
+      {{input type="text" value=answer-B placeholder="answer-B"}}
+    </label>
+    <label for="answer-C">
+      Answer C
+    {{input type="text" value=answer-C placeholder="answer-C"}}
+    </label>
+   
+    <label for="answer-D">
+      Answer D
+    {{input type="text" value=answer-D placeholder="answer-D"}}
+    </label>
+    <label for="correct-answer" class="correct-answer">
+      Choose correct answer: A,B,C,D
+      {{input type="text" value=answer placeholder="A" maxlength="1" }}
+    </label>
+    <button type="submit" >Save Question</button>
+  </form>
+</div>

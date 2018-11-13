@@ -1,0 +1,88 @@
+html {
+ margin: 0;
+ padding: 0;
+ font-family: Arial, Helvetica, sans-serif;
+
+}
+.menu {
+  padding: 10px;
+  background-color: cornflowerblue;
+  height: 50px;
+}
+
+.menu #logo {
+  float: left;
+  color: white;
+}
+
+.nav-link-container {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-end;
+  width: 50vw;
+}
+
+.nav-link {
+  color: white;
+  background-color: coral;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all ease-in 0.25s;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  
+  background-color: rgb(120, 19, 252);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.349);
+  cursor: pointer;
+}
+
+.new-question-container form {
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+ }
+  .new-question-container form label {
+    margin: 15px;
+  }
+  
+
+
+ .new-question-container form input,
+ .new-question-container form textarea {
+   font-size: 1em;
+  display: block;
+  width: 75vw;
+  height: 2.5em;
+  border-radius: 3px;
+  border: 1px solid #928e8e;
+  padding: 5px;
+ }
+
+ .new-question-container form textarea {
+   height: 7em;
+ }
+
+ .new-question-container form .correct-answer input{
+    width: 2em;
+  }
+
+ .new-question-container form button {
+  color: white;
+  background-color: coral;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all ease-in 0.25s;
+  border: none;
+ }
+ .new-question-container form button:hover {
+  background-color: rgb(120, 19, 252);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.349);
+ }
