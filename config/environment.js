@@ -1,11 +1,24 @@
-'use strict';
+"use strict";
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'ember-quiz',
+    modulePrefix: "ember-quiz",
     environment,
-    rootURL: '/',
-    locationType: 'auto',
+    contentSecurityPolicy: {
+      "script-src": "'self' 'unsafe-eval' apis.google.com",
+      "frame-src": "'self' https://*.firebaseapp.com",
+      "connect-src": "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    },
+    firebase: {
+      apiKey: "AIzaSyAL-1yiheDdHZmkXi2VLMMnL0xzP9u9U1o",
+      authDomain: "emberquiz.firebaseapp.com",
+      databaseURL: "https://emberquiz.firebaseio.com",
+      projectId: "emberquiz",
+      storageBucket: "emberquiz.appspot.com",
+      messagingSenderId: "656979581763"
+    },
+    rootURL: "/",
+    locationType: "auto",
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -23,7 +36,7 @@ module.exports = function(environment) {
     }
   };
 
-  if (environment === 'development') {
+  if (environment === "development") {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -31,19 +44,19 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
-  if (environment === 'test') {
+  if (environment === "test") {
     // Testem prefers this...
-    ENV.locationType = 'none';
+    ENV.locationType = "none";
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
-    ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.rootElement = "#ember-testing";
     ENV.APP.autoboot = false;
   }
 
-  if (environment === 'production') {
+  if (environment === "production") {
     // here you can enable a production-specific feature
   }
 

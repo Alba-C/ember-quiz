@@ -1,2 +1,18 @@
+{{outlet}}
 <h1>Answer Question</h1>
-{{!-- {{outlet}} --}}
+{{#each model as |question|}}
+<div class="question-container card">
+  <div class="card-body">
+     <p class="quiz-text">{{question.text}}</p>
+  </div>
+ <ul class="list-group list-group-flush">
+  <li class="list-group-item quiz-choice">{{question.answerA}}</li>
+  <li class="list-group-item quiz-choice">{{question.answerB}}</li>
+  <li class="list-group-item quiz-choice">{{question.answerC}}</li>
+  <li class="list-group-item quiz-choice">{{question.answerD}}</li>
+ </ul>
+  
+</div>
+  
+  
+{{/each}}
