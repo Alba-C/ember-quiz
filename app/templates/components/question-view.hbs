@@ -1,7 +1,4 @@
-{{outlet}}
-<h1>Answer Question</h1>
-{{#each model as |question|}}
-{{!-- <div class="question-container card">
+<div class="question-container card">
   <div class="card-body bg-primary text-white">
     <p class="quiz-text">{{question.text}}</p>
   </div>
@@ -17,8 +14,4 @@
   </ul>
   <button class="btn btn-primary" {{action "submitAnswer" question.correctAnswer}}>submit</button>
 
-</div> --}}
-{{question-view question=question}}
-
-
-{{/each}}
+</div>
