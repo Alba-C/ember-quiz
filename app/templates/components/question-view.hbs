@@ -1,17 +1,58 @@
-<div class="question-container card">
-  <div class="card-body bg-primary text-white">
-    <p class="quiz-text">{{question.text}}</p>
+<!-- Success Modal -->
+<div class=" myModal modal-hide " {{action "closeModal" "successModal"}} id="successModal">
+  <div class="dialog">
+    <div class="content">
+      <div class="header text-center">
+        <h1>Correct Answer</h1>
+      </div>
+      <div class="body">
+        <p>You did great here's a cookie!</p>
+      </div>
+      <div class="footer">
+        <button class="btn btn-primary"
+        {{action "nextQuestion" "successModal"}}
+        >Next</button>
+      </div>
+    </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item quiz-choice {{if selectedA "text-white bg-info"}}" id="A"
-      {{action "selectAnswer" question.id }}>{{question.answerA}}</li>
-    <li class="list-group-item quiz-choice {{if selectedB "text-white bg-info"}}" id="B"
-      {{action "selectAnswer" question.id }}>{{question.answerB}}</li>
-    <li class="list-group-item quiz-choice {{if selectedC "text-white bg-info"}}" id="C"
-      {{action "selectAnswer" question.id }}>{{question.answerC}}</li>
-    <li class="list-group-item quiz-choice {{if selectedD "text-white bg-info"}}" id="D"
-      {{action "selectAnswer" question.id }}>{{question.answerD}}</li>
-  </ul>
-  <button class="btn btn-primary" {{action "submitAnswer" question.correctAnswer}}>submit</button>
+</div>
+<!-- Fail Modal -->
+<div class=" myModal modal-hide " {{action "closeModal" "failModal"}} id="failModal">
+  <div class="dialog">
+    <div class="content">
+      <div class="header text-center">
+        <h1>Too Bad!</h1>
+      </div>
+      <div class="body text-center">
+        <h2>The correct answer is</h2>
+        <p>{{correctAnswer}}</p>
+      </div>
+      <div class="footer">
+        <button class="btn btn-primary"
+        {{action "nextQuestion" "failModal"}}
+        >Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card-container container">
+  <div class="card">
+    <div class="card-body bg-primary text-white">
+      <p class="quiz-text">{{question.text}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item quiz-choice {{if selectedA "border border-info bg-light font-weight-bold"}}" id="A"
+        {{action "selectAnswer" question.id }}>A: {{question.answerA}}</li>
+      <li class="list-group-item quiz-choice {{if selectedB "border border-info bg-light font-weight-bold"}}" id="B"
+        {{action "selectAnswer" question.id }}>B: {{question.answerB}}</li>
+      <li class="list-group-item quiz-choice {{if selectedC "border border-info bg-light font-weight-bold"}}" id="C"
+        {{action "selectAnswer" question.id }}>C: {{question.answerC}}</li>
+      <li class="list-group-item quiz-choice {{if selectedD "border border-info bg-light font-weight-bold"}}" id="D"
+        {{action "selectAnswer" question.id }}>D: {{question.answerD}}</li>
+    </ul>
+
+  </div>
+  <button class="btn btn-primary btn-lg mt-3" {{action "submitAnswer" question.correctAnswer question}}>submit</button>
 
 </div>

@@ -2,25 +2,14 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
 
-  // question: {
-  //     text: "",
-  //     choices: [
-  //       "",
-  //       "",
-  //       "",
-  //       ""
-  //     ],
-  //     answer: this.get('answer')
-  //   },
-
   actions: {
     submitForm() {
       
       let text = this.get('text');
-      let answerA = this.get('answer-A');
-      let answerB = this.get('answer-B');
-      let answerC = this.get('answer-C');
-      let answerD = this.get('answer-D');
+      let answerA = this.get('answerA');
+      let answerB = this.get('answerB');
+      let answerC = this.get('answerC');
+      let answerD = this.get('answerD');
       let correctAnswer = this.get('answer');
       
 

@@ -1,24 +1,8 @@
 {{outlet}}
 <h1>Answer Question</h1>
+
 {{#each model as |question|}}
-{{!-- <div class="question-container card">
-  <div class="card-body bg-primary text-white">
-    <p class="quiz-text">{{question.text}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item quiz-choice {{if selectedA "text-white bg-info"}}" id="A"
-      {{action "selectAnswer" question.id }}>{{question.answerA}}</li>
-    <li class="list-group-item quiz-choice {{if selectedB "text-white bg-info"}}" id="B"
-      {{action "selectAnswer" question.id }}>{{question.answerB}}</li>
-    <li class="list-group-item quiz-choice {{if selectedC "text-white bg-info"}}" id="C"
-      {{action "selectAnswer" question.id }}>{{question.answerC}}</li>
-    <li class="list-group-item quiz-choice {{if selectedD "text-white bg-info"}}" id="D"
-      {{action "selectAnswer" question.id }}>{{question.answerD}}</li>
-  </ul>
-  <button class="btn btn-primary" {{action "submitAnswer" question.correctAnswer}}>submit</button>
-
-</div> --}}
 {{question-view question=question}}
-
-
 {{/each}}
+
+{{question-view question=model}}

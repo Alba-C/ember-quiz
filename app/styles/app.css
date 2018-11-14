@@ -7,7 +7,7 @@ html {
 .menu {
   padding: 10px;
   background-color: cornflowerblue;
-  height: 50px;
+  height: 70px;
 }
 
 .menu #logo {
@@ -85,4 +85,43 @@ html {
   background-color: rgb(120, 19, 252);
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.349);
+ }
+
+ .card-body {
+   font-size: 1.25em;
+ }
+
+ .list-group-item:hover {
+   border: 1px solid #17a2b8;
+   background-color: #f8f9fa;
+
+ }
+#successModal {
+   background-color: #17a3b877;
+ }
+
+ #failModal {
+   background-color: #ab17b877;
+ }
+
+ .modal-show {
+   position: absolute;
+   z-index: 1000;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   }
+
+  .modal-hide {
+   display: none;
+
+ }
+
+ .myModal .dialog {
+  background-color: white;
+  width: 50vw;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 4em auto;
  }
