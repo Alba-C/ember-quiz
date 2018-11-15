@@ -1,10 +1,18 @@
 import Route from "@ember/routing/route";
 
+
 export default Route.extend({
   quizLength: 0,
   currentQuestion: 0,
+  
+
 
   model() {
+    // const data = this.get('question-view')
+    // console.log('data', data);
+    
+    
+
     let quizArrIds = [];
     return this.store
       .findAll("question")

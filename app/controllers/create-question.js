@@ -2,6 +2,8 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
 
+ 
+
   actions: {
     submitForm() {
       
@@ -11,7 +13,7 @@ export default Controller.extend({
       let answerC = this.get('answerC');
       let answerD = this.get('answerD');
       let correctAnswer = this.get('answer');
-      
+     
 
 
       //Create New Question

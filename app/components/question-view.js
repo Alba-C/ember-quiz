@@ -2,12 +2,45 @@ import Component from '@ember/component';
 
 
 export default Component.extend({
+  store: Ember.inject.service(),
   selectedA: false,
   selectedB: false,
   selectedC: false,
   selectedD: false,
   currentSelection: "",
   correctAnswer: "",
+  currentNum: 0,
+  totalQuestions: 0,
+  questionText: "default",
+
+  willRender() {
+    let qArrIds = [];
+    // const questions = this.get("targetObject.store").findAll('question')
+    // const questions = this.get("store").findAll('question')
+    // questions.map(each => console.log(each.id))
+    // console.log('questions', questions);
+  //  const store = this.store.findAll('question')
+   return  this.get("store").findAll('question')
+    .then(allQs =>
+      allQs.map(question => {
+       qArrIds.push(question.id);
+      })
+    )
+      .then(() => {
+        console.log(qArrIds)
+        console.log(this.get('store').findRecord("question", qArrIds[1]))
+        return this.get("store").findRecord("question", qArrIds[1]);
+     })
+     .then((q) => {
+       console.log(q.text)
+       this.set("selectedB", true);
+       return 
+     })
+     .then(()=> console.log(this.questionText))
+     ;
+    console.log('store', store);
+    return store
+  },
 
   actions: {
     selectAnswer(id, correctAnswer) {
@@ -46,7 +79,8 @@ export default Component.extend({
 
     nextQuestion(id) {
       this.actions.closeModal(id)
-      // this.send('quiz', "test")
+      
+      
     },
 
     submitAnswer(correctAnswer, question) {
