@@ -1,9 +1,84 @@
 {{outlet}}
 <h1>Answer Question</h1>
+<h2>Question # {{currentNum }} of {{totalQuestions}}</h2>
 
 {{!-- {{#each model as |question|}}
 {{question-view question=question}}
 {{/each}} --}}
 
 {{!-- {{question-view question=model}} --}}
-{{question-view }}
+{{!-- {{question-view }} --}}
+<!-- Success Modal -->
+<div class=" myModal modal-hide " {{action "closeModal" "successModal"}} id="successModal">
+  <div class="dialog">
+    <div class="content">
+      <div class="header text-center">
+        <h1>Correct Answer</h1>
+      </div>
+      <div class="body">
+        <p>You did great here's a cookie!</p>
+      </div>
+      <div class="footer">
+        <button class="btn btn-primary" {{action "nextQuestion" "successModal"}}>Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fail Modal -->
+<div class=" myModal modal-hide " {{action "closeModal" "failModal"}} id="failModal">
+  <div class="dialog">
+    <div class="content">
+      <div class="header text-center">
+        <h1>Too Bad!</h1>
+      </div>
+      <div class="body text-center">
+        <h2>The correct answer is</h2>
+        <p>{{correctAnswer}}</p>
+      </div>
+      <div class="footer">
+        <button class="btn btn-primary" {{action "nextQuestion" "failModal"}}>Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Complete Modal -->
+<div class=" myModal modal-hide " {{action "closeModal" "completeModal"}} id="completeModal">
+  <div class="dialog">
+    <div class="content">
+      <div class="header text-center">
+        <h1>You Answered this many correct</h1>
+      </div>
+      <div class="body text-center">
+        <h2>The correct answer is</h2>
+        <p>{{correctAnswer}}</p>
+      </div>
+      <div class="footer">
+        <button class="btn btn-primary" {{action "resetQuiz" "completeModal"}}>Retake Quiz</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Question -->
+<div class="card-container container">
+  <div class="card">
+    <div class="card-body bg-primary text-white">
+      <p class="quiz-text">{{model.text}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item quiz-choice {{if selectedA "border border-info bg-light font-weight-bold"}}" id="A"
+        {{action "selectAnswer" model.id }}>A: {{model.answerA}}</li>
+      <li class="list-group-item quiz-choice {{if selectedB "border border-info bg-light font-weight-bold"}}" id="B"
+        {{action "selectAnswer" model.id }}>B: {{model.answerB}}</li>
+      <li class="list-group-item quiz-choice {{if selectedC "border border-info bg-light font-weight-bold"}}" id="C"
+        {{action "selectAnswer" model.id }}>C: {{model.answerC}}</li>
+      <li class="list-group-item quiz-choice {{if selectedD "border border-info bg-light font-weight-bold"}}" id="D"
+        {{action "selectAnswer" model.id }}>D: {{model.answerD}}</li>
+    </ul>
+
+  </div>
+  <button class="btn btn-primary btn-lg mt-3" {{action "submitAnswer" model.correctAnswer model}}>submit</button>
+
+
+</div>
+
+

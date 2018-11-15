@@ -99,6 +99,9 @@ html {
 #successModal {
    background-color: #17a3b877;
  }
+#completeModal {
+   background-color: #f0e00bb2;
+ }
 
  #failModal {
    background-color: #ab17b877;
