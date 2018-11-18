@@ -2,12 +2,13 @@ html {
  margin: 0;
  padding: 0;
  font-family: Arial, Helvetica, sans-serif;
-
 }
+
 .menu {
   padding: 10px;
-  background-color: cornflowerblue;
+  background-color: rgb(141, 100, 237);
   height: 70px;
+  display: flex;
 }
 
 .menu #logo {
@@ -34,10 +35,10 @@ html {
 }
 
 .nav-link:hover {
-  
-  background-color: rgb(120, 19, 252);
+  color: white;
+  background-color: rgb(250, 83, 23);
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.349);
+  box-shadow: 0 0 15px rgba(255, 253, 253, 0.849);
   cursor: pointer;
 }
 
@@ -87,9 +88,12 @@ html {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.349);
  }
 
+ .card-container {
+   max-width: 70vw;
+ }
  .card-body {
    font-size: 1.25em;
- }
+    }
 
  .list-group-item:hover {
    border: 1px solid #17a2b8;
@@ -128,3 +132,18 @@ html {
   border-radius: 10px;
   margin: 4em auto;
  }
+
+ .btn-primary {
+   background-color: coral;
+   border: 1px solid coral;
+   transition: all ease-in 0.25s;
+   }
+ .btn-primary:hover {
+   background-color: rgb(250, 83, 23);
+   border: 1px solid coral;
+   transform: scale(1.05);
+   }
+
+   .bg-primary {
+     background-color: rgb(141, 100, 237) !important;
+   }

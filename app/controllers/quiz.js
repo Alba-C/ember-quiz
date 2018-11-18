@@ -1,4 +1,4 @@
-import Controller from '@ember/controller';
+import Controller from "@ember/controller";
 
 export default Controller.extend({
   selectedA: false,
@@ -7,16 +7,49 @@ export default Controller.extend({
   selectedD: false,
   currentSelection: "",
   correctAnswer: "",
-  currentNum: 2,
-  totalQuestions: 0,
+  currentNum: 1,
+  totalQuestions: 5,
   totalCorrect: 0,
   totalWrong: 0,
-
+ 
   
-  actions: {
-    selectAnswer(id, correctAnswer) {
-      const target = event.target.id;
+  init() {
+    this._super();
+    console.log("I'm getting here .....", this.store.findAll('question'));
+    // this.model()
+  }, 
+  findRecord() {
+   const countries = [
+      { name: 'United States', flagUrl: '/flags/us.svg' },
+      { name: 'Spain', flagUrl: '/flags/es.svg' },
+      { name: 'Portugal', flagUrl: '/flags/pt.svg' },
+      { name: 'Russia', flagUrl: '/flags/ru.svg' },
+      { name: 'Latvia', flagUrl: '/flags/lv.svg' },
+      { name: 'Brazil', flagUrl: '/flags/br.svg' },
+      { name: 'United Kingdom', flagUrl: '/flags/gb.svg' },
+    ]
+    return countries[0].name
+  },
+  // model() {
+  //   const qArrIds = [];
+  //   return this.store.findAll('question').then(allQs => {
+  //     allQs.map(question => {
+  //       qArrIds.push(question.id);
+  //     })
+  //     return qArrIds
+  //   }).catch(error => console.log("error getting data in controller", error))
+  // },
+  // nextID() {
+  //   const arr = this.model()
+  //   const {_id, _result, _content} = arr
+  //   console.log("nextID", typeof(_content), arr);
+  //   return arr[this.currentNum - 1]
+  // },
 
+  actions: {
+    selectAnswer(id) {
+      const target = event.target.id;
+      console.log("id", id)
       this.set("selectedA", false);
       this.set("selectedB", false);
       this.set("selectedC", false);
@@ -42,11 +75,20 @@ export default Controller.extend({
     },
 
     nextQuestion(id) {
-      console.log("currentNum", this.currentNum, "totalQuesitons", this.totalQuestions );
+      let cntrl = this;
+      console.log(
+        "currentNum",
+        this.currentNum,
+        "totalQuesitons",
+        this.totalQuestions
+      );
       this.actions.closeModal(id);
       if (this.currentNum < this.totalQuestions) {
-        this.set('currentNum', this.currentNum + 1)
+        this.set("currentNum", this.currentNum + 1);
+        cntrl.send("refreshModel");
+       this.transitionToRoute('quiz')
       } else {
+       
         completeModal.classList.remove("modal-hide");
         completeModal.classList.add("modal-show");
       }
@@ -54,12 +96,14 @@ export default Controller.extend({
 
     resetQuiz(id) {
       this.actions.closeModal(id);
-      this.setProperties({currentNum: 1, currentSelection: ""})
+      this.setProperties({ currentNum: 1, currentSelection: "", totalCorrect: 0, totalWrong: 0 });
     },
 
     submitAnswer(correctAnswer, question) {
+      console.log("submit", correctAnswer, question);
       const correct = correctAnswer.toLowerCase();
       const selected = this.currentSelection.toLowerCase();
+
 
       switch (correct) {
         case "a":
@@ -80,10 +124,11 @@ export default Controller.extend({
       const failModal = document.getElementById("failModal");
 
       if (correct === selected) {
-        this.set
+        this.set("totalCorrect", this.totalCorrect + 1);
         successModal.classList.remove("modal-hide");
         successModal.classList.add("modal-show");
       } else {
+        this.set("totalWrong", this.totalWrong + 1);
         failModal.classList.remove("modal-hide");
         failModal.classList.add("modal-show");
       }

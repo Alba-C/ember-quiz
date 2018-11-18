@@ -1,6 +1,8 @@
 {{outlet}}
-<h1>Answer Question</h1>
-<h2>Question # {{currentNum }} of {{totalQuestions}}</h2>
+<h1>Question # {{currentNum }} of {{totalQuestions}}</h1>
+<h2>Total Correct: {{totalCorrect}}</h2>
+<h2>Total Wrong: {{totalWrong}}</h2>
+
 
 {{!-- {{#each model as |question|}}
 {{question-view question=question}}
@@ -60,6 +62,7 @@
 </div>
 <!-- Question -->
 <div class="card-container container">
+ <h1>{{ selectedA}}</h1>
   <div class="card">
     <div class="card-body bg-primary text-white">
       <p class="quiz-text">{{model.text}}</p>
