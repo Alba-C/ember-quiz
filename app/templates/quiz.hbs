@@ -1,7 +1,7 @@
 {{outlet}}
-<h1>Question # {{currentNum }} of {{totalQuestions}}</h1>
-<h2>Total Correct: {{totalCorrect}}</h2>
-<h2>Total Wrong: {{totalWrong}}</h2>
+<small id="quiz-question-count">Question # {{currentNum }} of {{totalQuestions}}</small>
+<h2 id="quiz-total-correct">Total Correct: <span >{{totalCorrect}}</span></h2>
+<h2 id="quiz-total-wrong" >Total Wrong: <span>{{totalWrong}}</span></h2>
 
 
 <!-- Success Modal -->
@@ -73,7 +73,6 @@
 </div>
 <!-- Question -->
 <div class="card-container container">
- <h1>{{ selectedA}}</h1>
   <div class="card">
     <div class="card-body bg-primary text-white">
       <p class="quiz-text">{{model.text}}</p>
