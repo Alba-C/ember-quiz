@@ -4,12 +4,6 @@
 <h2>Total Wrong: {{totalWrong}}</h2>
 
 
-{{!-- {{#each model as |question|}}
-{{question-view question=question}}
-{{/each}} --}}
-
-{{!-- {{question-view question=model}} --}}
-{{!-- {{question-view }} --}}
 <!-- Success Modal -->
 <div class=" myModal modal-hide " {{action "closeModal" "successModal"}} id="successModal">
   <div class="dialog">
@@ -56,6 +50,23 @@
       </div>
       <div class="footer">
         <button class="btn btn-primary" {{action "resetQuiz" "completeModal"}}>Retake Quiz</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- No Selection Modal -->
+<div class=" myModal modal-hide " {{action "closeModal" "noSelectionModal"}} id="noSelectionModal">
+  <div class="dialog">
+    <div class="content">
+      <div class="header text-center">
+        <h1>You didn't select an answer!</h1>
+      </div>
+      <div class="body text-center">
+        <h2></h2>
+        
+      </div>
+      <div class="footer">
+        <button class="btn btn-primary" {{action "closeModal" "noSelectionModal"}}>Ok</button>
       </div>
     </div>
   </div>

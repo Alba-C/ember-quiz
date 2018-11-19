@@ -107,7 +107,7 @@ html {
    background-color: #f0e00bb2;
  }
 
- #failModal {
+ #failModal, #noSelectionModal {
    background-color: #ab17b877;
  }
 

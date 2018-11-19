@@ -12,51 +12,11 @@ export default Controller.extend({
   totalCorrect: 0,
   totalWrong: 0,
  
-  
-  init() {
-    this._super();
-    console.log("I'm getting here .....", this.store.findAll('question'));
-    // this.model()
-  }, 
-  findRecord() {
-   const countries = [
-      { name: 'United States', flagUrl: '/flags/us.svg' },
-      { name: 'Spain', flagUrl: '/flags/es.svg' },
-      { name: 'Portugal', flagUrl: '/flags/pt.svg' },
-      { name: 'Russia', flagUrl: '/flags/ru.svg' },
-      { name: 'Latvia', flagUrl: '/flags/lv.svg' },
-      { name: 'Brazil', flagUrl: '/flags/br.svg' },
-      { name: 'United Kingdom', flagUrl: '/flags/gb.svg' },
-    ]
-    return countries[0].name
-  },
-  // model() {
-  //   const qArrIds = [];
-  //   return this.store.findAll('question').then(allQs => {
-  //     allQs.map(question => {
-  //       qArrIds.push(question.id);
-  //     })
-  //     return qArrIds
-  //   }).catch(error => console.log("error getting data in controller", error))
-  // },
-  // nextID() {
-  //   const arr = this.model()
-  //   const {_id, _result, _content} = arr
-  //   console.log("nextID", typeof(_content), arr);
-  //   return arr[this.currentNum - 1]
-  // },
-
   actions: {
     selectAnswer(id) {
       const target = event.target.id;
-      console.log("id", id)
-      this.set("selectedA", false);
-      this.set("selectedB", false);
-      this.set("selectedC", false);
-      this.set("selectedD", false);
-
-      console.log("this id selected", id, "selected target", target);
-
+      this.setProperties({selectedA: false, selectedB: false, selectedC: false, selectedD: false})
+      
       switch (target) {
         case "A":
           return this.setProperties({ selectedA: true, currentSelection: "A" });
@@ -75,13 +35,9 @@ export default Controller.extend({
     },
 
     nextQuestion(id) {
+      this.setProperties({selectedA: false, selectedB: false, selectedC: false, selectedD: false, currentSelection: ""})
       let cntrl = this;
-      console.log(
-        "currentNum",
-        this.currentNum,
-        "totalQuesitons",
-        this.totalQuestions
-      );
+      
       this.actions.closeModal(id);
       if (this.currentNum < this.totalQuestions) {
         this.set("currentNum", this.currentNum + 1);
@@ -100,37 +56,42 @@ export default Controller.extend({
     },
 
     submitAnswer(correctAnswer, question) {
-      console.log("submit", correctAnswer, question);
-      const correct = correctAnswer.toLowerCase();
-      const selected = this.currentSelection.toLowerCase();
-
-
-      switch (correct) {
-        case "a":
-          this.set("correctAnswer", `A: ${question.answerA}`);
-          break;
-        case "b":
-          this.set("correctAnswer", `B: ${question.answerB}`);
-          break;
-        case "c":
-          this.set("correctAnswer", `C: ${question.answerC}`);
-          break;
-        default:
-          this.set("correctAnswer", `D: ${question.answerD}`);
-          break;
-      }
-
-      const successModal = document.getElementById("successModal");
-      const failModal = document.getElementById("failModal");
-
-      if (correct === selected) {
-        this.set("totalCorrect", this.totalCorrect + 1);
-        successModal.classList.remove("modal-hide");
-        successModal.classList.add("modal-show");
+      if (this.currentSelection) {
+        const correct = correctAnswer.toLowerCase();
+        const selected = this.currentSelection.toLowerCase();
+  
+  
+        switch (correct) {
+          case "a":
+            this.set("correctAnswer", `A: ${question.answerA}`);
+            break;
+          case "b":
+            this.set("correctAnswer", `B: ${question.answerB}`);
+            break;
+          case "c":
+            this.set("correctAnswer", `C: ${question.answerC}`);
+            break;
+          default:
+            this.set("correctAnswer", `D: ${question.answerD}`);
+            break;
+        }
+  
+        const successModal = document.getElementById("successModal");
+        const failModal = document.getElementById("failModal");
+  
+        if (correct === selected) {
+          this.setProperties({ totalCorrect: this.totalCorrect + 1, selectAnswer: "" });
+          successModal.classList.remove("modal-hide");
+          successModal.classList.add("modal-show");
+          
+        } else {
+          this.set("totalWrong", this.totalWrong + 1);
+          failModal.classList.remove("modal-hide");
+          failModal.classList.add("modal-show");
+        }
       } else {
-        this.set("totalWrong", this.totalWrong + 1);
-        failModal.classList.remove("modal-hide");
-        failModal.classList.add("modal-show");
+        noSelectionModal.classList.remove("modal-hide");
+        noSelectionModal.classList.add("modal-show");
       }
     }
   }
