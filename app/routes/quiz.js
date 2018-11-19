@@ -31,18 +31,6 @@ export default Route.extend({
         return quizArrIds[currentQ]
       }
     )
-      // .then(allQs => 
-      //   allQs.map(question => {
-      //     quizArrIds.push(question.id);
-      //   })
-      // )
-      // .then(() => {
-        
-      //   this.controllerFor("quiz").set("totalQuestions", quizArrIds.length);
-      //   this.controllerFor("quiz").set("arr", (i)=>{return quizArrIds} );
-      //   return this.store.findRecord("question", quizArrIds[currentQ]);
-      // });
-
-    // this.store.findRecord('question', quizArrIds[this.currentQuestion])
+     
   }
 });
