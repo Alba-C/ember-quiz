@@ -1,7 +1,9 @@
-<h1>Welcome to Ember Quiz!</h1>
+<h1 class="text-center">Welcome to Ember Quiz!</h1>
 
 <p>Below are all the questions already created. From here you can edit or delete the questions.</p>
 <p>If you want to create a new questions or take the quiz, use the buttons above.</p>
+<a href="https://www.proprofs.com/quiz-school/story.php?title=mtezndaymqrn1p" target="_blank" rel="noopener noreferrer" ><small> Sample ember questions lovingly borrowed from www.ProProfs.com</small></a>
+
 
 <!-- Delete Question Modal -->
 {{#if showDeleteModal}}
@@ -13,7 +15,6 @@
       </div>
       <div class="body text-center">
         <h2></h2>
-
       </div>
       <div class="footer">
         <button class="btn btn-success" {{action "closeModal"}}>Cancel</button>
@@ -25,15 +26,13 @@
 {{/if}}
 <!-- Question -->
 {{#each model as |model|}}
-
 <div class="card-container container">
   <div class="card">
     <div class="card-body bg-primary text-white">
       <p class="quiz-text">{{model.text}}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item  " id="A"
-        {{action "selectAnswer" model.id }}>A: {{model.answerA}}</li>
+      <li class="list-group-item  " id="A" {{action "selectAnswer" model.id }}>A: {{model.answerA}}</li>
       <li class="list-group-item  {{if selectedB "border border-info bg-light font-weight-bold"}}" id="B"
         {{action "selectAnswer" model.id }}>B: {{model.answerB}}</li>
       <li class="list-group-item  {{if selectedC "border border-info bg-light font-weight-bold"}}" id="C"
@@ -41,15 +40,11 @@
       <li class="list-group-item  {{if selectedD "border border-info bg-light font-weight-bold"}}" id="D"
         {{action "selectAnswer" model.id }}>D: {{model.answerD}}</li>
     </ul>
-
   </div>
-  
-  {{#link-to 'edit' model.id}}
-  <button class="btn btn-success btn-lg mt-3" >Edit</button>
+
+  {{#link-to "edit" model.id}}
+  <button class="btn btn-success btn-lg mt-3">Edit</button>
   {{/link-to}}
   <button class="btn btn-danger btn-lg mt-3" {{action "confirmDelete" model.id }}>Delete</button>
-
-
 </div>
 {{/each}}
-{{!-- {{outlet}} --}}

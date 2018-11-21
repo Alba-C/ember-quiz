@@ -43,20 +43,10 @@ export default Controller.extend({
           self.transitionToRoute("/");
         });
 
-        // //Clear Form
-        // this.setProperties({
-        //   text: "",
-        //   answerA: "",
-        //   answerB: "",
-        //   answerC: "",
-        //   answerD: "",
-        //   correctAnswer: ""
-        // });
-
-        console.log("Edit Saved");
+      
+        
       } else {
-        // errorModal.classList.remove("modal-hide");
-        // errorModal.classList.add("modal-show");
+      
         this.set('showErrorModal', true);
       }
     }

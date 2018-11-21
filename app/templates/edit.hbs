@@ -1,54 +1,54 @@
 <!-- Error  Modal -->
 {{#if showErrorModal}}
-<div class=" myModal modal-show " {{action "closeModal" "errorModal"}} id="errorModal">
-  <div class="dialog">
-    <div class="content">
-      <div class="header text-center">
-        <h1>Correct Answer Cannot Be: <span>{{correctAnswer}}</span></h1>
-      </div>
-      <div class="body text-center">
-        <h2>Please choose a letter below</h2>
-        <h2>A B C D</h2>
+  <div class=" myModal modal-show " {{action "closeModal" "errorModal"}} id="errorModal">
+    <div class="dialog">
+      <div class="content">
+        <div class="header text-center">
+          <h1>Correct Answer Cannot Be: <span>{{correctAnswer}}</span></h1>
+        </div>
+        <div class="body text-center">
+          <h2>Please choose a letter below</h2>
+          <h2>A B C D</h2>
 
-      </div>
-      <div class="footer">
-        <button class="btn btn-success" {{action "closeModal" }}>Ok</button>
+        </div>
+        <div class="footer">
+          <button class="btn btn-success" {{action "closeModal" }}>Ok</button>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
 {{/if}}
-<div class="new-question-container">
-  <h1>Edit question</h1>
-  <form action="post" >
-    <label for="text"> Question Text
-      {{textarea type="text" name="question-text" value=model.text placeholder="Add question text here" required=true}}
-      {{!-- <textarea name="question-text" id="" cols="100" rows="10" placeholder="Add question text here" />
-      --}}
-    </label>
+  <div class="new-question-container">
+    <h1>Edit question</h1>
+    <form action="post" >
+      <label for="text"> Question Text
+        {{textarea type="text" name="question-text" value=model.text placeholder="Add question text here" required=true}}
+        {{!-- <textarea name="question-text" id="" cols="100" rows="10" placeholder="Add question text here" />
+        --}}
+      </label>
+      
+      <label for="answerA">
+        Answer A
+        {{input type="text" value=model.answerA placeholder="enter answer choice" required=true}}
+      </label>
+      <label for="answerB">
+        Answer B
+        {{input type="text" value=model.answerB placeholder="enter answer choice" required=true}}
+      </label>
+      <label for="answerC">
+        Answer C
+      {{input type="text" value=model.answerC placeholder="enter answer choice" required=true}}
+      </label>
     
-    <label for="answerA">
-      Answer A
-      {{input type="text" value=model.answerA placeholder="enter answer choice" required=true}}
-    </label>
-    <label for="answerB">
-      Answer B
-      {{input type="text" value=model.answerB placeholder="enter answer choice" required=true}}
-    </label>
-    <label for="answerC">
-      Answer C
-    {{input type="text" value=model.answerC placeholder="enter answer choice" required=true}}
-    </label>
-   
-    <label for="answerD">
-      Answer D
-    {{input type="text" value=model.answerD placeholder="enter answer choice" required=true}}
-    </label>
-    <label for="correctAnswer" class="correct-answer">
-      Choose correct answer: A,B,C,D
-      {{input type="text" value=model.correctAnswer placeholder="A" maxlength="1" required=true id="correctAnswer-Input" }}
-    </label>
-    <button type="submit" {{action "editForm" model.id}}>Save Question</button>
-  </form>
-</div>
+      <label for="answerD">
+        Answer D
+      {{input type="text" value=model.answerD placeholder="enter answer choice" required=true}}
+      </label>
+      <label for="correctAnswer" class="correct-answer">
+        Choose correct answer: A,B,C,D
+        {{input type="text" value=model.correctAnswer placeholder="A" maxlength="1" required=true id="correctAnswer-Input" }}
+      </label>
+      <button type="submit" {{action "editForm" model.id}}>Save Question</button>
+    </form>
+  </div>

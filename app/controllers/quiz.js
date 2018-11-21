@@ -35,7 +35,7 @@ export default Controller.extend({
   
  
   actions: {
-    selectAnswer(id) {
+    selectAnswer() {
       const target = event.target.id;
       this.setProperties({
         selectedA: false,
@@ -117,9 +117,6 @@ export default Controller.extend({
             this.set("correctAnswer", `D: ${question.answerD}`);
             break;
         }
-
-        const successModal = document.getElementById("successModal");
-        const failModal = document.getElementById("failModal");
 
         if (correct === selected) {
           this.setProperties({
