@@ -87,12 +87,16 @@ html {
 
 .card-container {
   max-width: 70vw;
+  margin:  20px 0;
+  box-shadow: 5px 5px 25px 2px rgba(0,0,0, 0.1);
+  padding: 10px;
+  border-radius: 5px;
 }
 .card-body {
   font-size: 1.25em;
 }
 
-.list-group-item:hover {
+.quiz-choice:hover {
   border: 1px solid #17a2b8;
   background-color: #f8f9fa;
 }
@@ -113,17 +117,19 @@ html {
 #successModal {
   background-color: #17a3b877;
 }
-#completeModal {
+#completeModal, #editQuestionModal {
   background-color: #f0e00bb2;
 }
 
 #failModal,
-#noSelectionModal {
+#noSelectionModal,
+#deleteQuestionModal,
+#errorModal {
   background-color: #ab17b877;
 }
 
 .modal-show {
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;
@@ -141,6 +147,34 @@ html {
   padding: 20px;
   border-radius: 10px;
   margin: 4em auto;
+}
+
+.myModal .footer {
+  
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.btn-danger {
+   background-color: rgb(182, 49, 49);
+  border: 1px solid rgb(182, 49, 49);
+  transition: all ease-in 0.25s;
+}
+.btn-danger:hover {
+   background-color: rgb(224, 9, 9);
+  border: 1px solid rgb(224, 9, 9);
+  transform: scale(1.05);
+}
+.btn-success {
+   background-color: rgb(109, 182, 49);
+  border: 1px solid rgb(109, 182, 49);
+  transition: all ease-in 0.25s;
+}
+.btn-success:hover {
+   background-color: rgb(88, 190, 4);
+  border: 1px solid rgb(88, 190, 4);;
+  transform: scale(1.05);
 }
 
 .btn-primary {

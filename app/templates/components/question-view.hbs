@@ -37,11 +37,11 @@
 </div>
 <!-- Question -->
 <div class="card-container container">
-  <div class="card">
+  <div class="card ">
     <div class="card-body bg-primary text-white">
       <p class="quiz-text">{{question.text}}</p>
     </div>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush quizActive">
       <li class="list-group-item quiz-choice {{if selectedA "border border-info bg-light font-weight-bold"}}" id="A"
         {{action "selectAnswer" question.id }}>A: {{question.answerA}}</li>
       <li class="list-group-item quiz-choice {{if selectedB "border border-info bg-light font-weight-bold"}}" id="B"
