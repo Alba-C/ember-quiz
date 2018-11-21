@@ -6,10 +6,5 @@ export default Route.extend({
   model() {
     return this.store.findAll("question");
   },
-  actions: {
-    test(id) {
-      console.log(id);
-      this.componentFor('edit-question-form').set('id', id)
-    }
-  }
+
 });

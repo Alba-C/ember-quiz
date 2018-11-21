@@ -3,26 +3,9 @@
 <p>Below are all the questions already created. From here you can edit or delete the questions.</p>
 <p>If you want to create a new questions or take the quiz, use the buttons above.</p>
 
-<!-- Edit Question Modal -->
-<div class=" myModal modal-hide " {{action "closeModal" "editQuestionModal"}} id="editQuestionModal">
-  <div class="dialog">
-    <div class="content">
-      <div class="header text-center">
-        <h1>Edit This Question</h1>
-      </div>
-      <div class="body text-center">
-        <h2>edit ID:{{deleteID}}</h2>
-      {{edit-question-form deleteID=deleteID }}
-      </div>
-      <div class="footer">
-        <button class="btn btn-success" {{action "closeModal" "editQuestionModal"}}>Cancel</button>
-        <button class="btn btn-danger" {{action "deleteQuestion" }}>Save It</button>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- Delete Question Modal -->
-<div class=" myModal modal-hide " {{action "closeModal" "deleteQuestionModal"}} id="deleteQuestionModal">
+{{#if showDeleteModal}}
+<div class=" myModal modal-show " {{action "closeModal" }} id="deleteQuestionModal">
   <div class="dialog">
     <div class="content">
       <div class="header text-center">
@@ -33,12 +16,13 @@
 
       </div>
       <div class="footer">
-        <button class="btn btn-success" {{action "closeModal" "deleteQuestionModal"}}>Cancel</button>
+        <button class="btn btn-success" {{action "closeModal"}}>Cancel</button>
         <button class="btn btn-danger" {{action "deleteQuestion" }}>Delete It</button>
       </div>
     </div>
   </div>
 </div>
+{{/if}}
 <!-- Question -->
 {{#each model as |model|}}
 
