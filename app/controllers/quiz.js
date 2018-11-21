@@ -11,6 +11,11 @@ export default Controller.extend({
   totalQuestions: 0,
   totalCorrect: 0,
   totalWrong: 0,
+  showSuccessModal: false,
+  showFailModal: false,
+  showCompleteModal: false,
+  showNoSelectionModal: false,
+
 
   init() {
     this._super();
@@ -26,12 +31,9 @@ export default Controller.extend({
       totalCorrect: 0,
       totalWrong: 0
     });
-    console.log("initialized")
-  },
+   },
   
-  didInsertElement() {
-   console.log("inserted"); 
-  },
+ 
   actions: {
     selectAnswer(id) {
       const target = event.target.id;
@@ -54,39 +56,45 @@ export default Controller.extend({
       }
     },
 
-    closeModal(id) {
-      const closeModal = document.getElementById(id);
-      closeModal.classList.add("modal-hide");
+    closeModal() {
+      this.setProperties({ showSuccessModal: false, showFailModal: false, showCompleteModal: false, showNoSelectionModal: false})
     },
 
-    nextQuestion(id) {
+    nextQuestion() {
+    
       this.setProperties({
         selectedA: false,
         selectedB: false,
         selectedC: false,
         selectedD: false,
-        currentSelection: ""
+        currentSelection: "",
+        showSuccessModal: false,
+        showFailModal: false,
+        showCompleteModal: false,
+        showNoSelectionModal: false
       });
       let cntrl = this;
-
-      this.actions.closeModal(id);
+      
       if (this.currentNum < this.totalQuestions) {
         this.set("currentNum", this.currentNum + 1);
         cntrl.send("refreshModel");
         this.transitionToRoute("quiz");
       } else {
-        completeModal.classList.remove("modal-hide");
-        completeModal.classList.add("modal-show");
+        this.set("showCompleteModal", true);
       }
     },
 
-    resetQuiz(id) {
-      this.actions.closeModal(id);
+    resetQuiz() {
+     
       this.setProperties({
         currentNum: 1,
         currentSelection: "",
         totalCorrect: 0,
-        totalWrong: 0
+        totalWrong: 0,
+        showSuccessModal: false,
+        showFailModal: false,
+        showCompleteModal: false,
+        showNoSelectionModal: false
       });
     },
 
@@ -118,16 +126,15 @@ export default Controller.extend({
             totalCorrect: this.totalCorrect + 1,
             selectAnswer: ""
           });
-          successModal.classList.remove("modal-hide");
-          successModal.classList.add("modal-show");
+          this.set("showSuccessModal", true);
+        
         } else {
           this.set("totalWrong", this.totalWrong + 1);
-          failModal.classList.remove("modal-hide");
-          failModal.classList.add("modal-show");
+          this.set("showFailModal", true);
         }
       } else {
-        noSelectionModal.classList.remove("modal-hide");
-        noSelectionModal.classList.add("modal-show");
+        this.set("showNoSelectionModal", true);
+       
       }
     }
   }

@@ -1,10 +1,10 @@
 import Controller from "@ember/controller";
 
 export default Controller.extend({
+  showErrorModal: false,
   actions: {
-    closeModal(id) {
-      const closeModal = document.getElementById(id);
-      closeModal.classList.add("modal-hide");
+    closeModal() {
+      this.set("showErrorModal", false);
       document.getElementById("correctAnswer-Input").focus();
     },
     submitForm() {
@@ -48,10 +48,8 @@ export default Controller.extend({
           correctAnswer: ""
         });
         this.transitionToRoute('/');
-        console.log("submitted");
-      } else {
-        errorModal.classList.remove("modal-hide");
-        errorModal.classList.add("modal-show");
+       } else {
+        this.set('showErrorModal', true);
         
       }
     }

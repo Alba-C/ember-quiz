@@ -1,5 +1,6 @@
 <!-- Error  Modal -->
-<div class=" myModal modal-hide " {{action "closeModal" "errorModal"}} id="errorModal">
+{{#if showErrorModal}}
+<div class=" myModal modal-show " {{action "closeModal" "errorModal"}} id="errorModal">
   <div class="dialog">
     <div class="content">
       <div class="header text-center">
@@ -17,6 +18,7 @@
     </div>
   </div>
 </div>
+{{/if}}
 <div class="new-question-container">
   <h1>Create a new question</h1>
   <form action="post" {{action "submitForm" on="submit"}}>
