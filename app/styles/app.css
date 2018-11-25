@@ -124,7 +124,8 @@ html {
 #failModal,
 #noSelectionModal,
 #deleteQuestionModal,
-#errorModal {
+#errorModal,
+#showResetModal {
   background-color: #ab17b877;
 }
 

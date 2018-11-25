@@ -1,0 +1,20 @@
+<button class="btn btn-secondary" onclick={{action "showResetModal"}}>Reset Questions</button>
+<!-- Show Reset  Modal -->
+{{#if showResetModal}}
+<div class=" myModal modal-show " {{action "closeModal" "errorModal"}} id="showResetModal">
+  <div class="dialog">
+    <div class="content">
+      <div class="header text-center">
+        <h1>Are you sure you want to reset?</h1>
+      </div>
+      <div class="body text-center">
+        <h2>This will delete all new questions and edits</h2>
+       </div>
+      <div class="footer">
+        <button class="btn btn-success" {{action "closeModal"}}>Cancel</button>
+        <button class="btn btn-danger" {{action "resetDB" }}>Reset Questions</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
