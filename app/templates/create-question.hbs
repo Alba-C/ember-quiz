@@ -20,7 +20,7 @@
 </div>
 {{/if}}
 <div class="new-question-container">
-  <h1>Create a new question</h1>
+  <h1 class="text-center mt-3">Create a new question</h1>
   <form action="post" {{action "submitForm" on="submit"}}>
     <label for="text"> Question Text
       {{textarea type="text" name="question-text" value=text placeholder="Add question text here" required=true}}
