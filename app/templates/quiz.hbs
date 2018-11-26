@@ -87,13 +87,13 @@
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item quiz-choice {{if selectedA "border border-info bg-light font-weight-bold"}}" id="A"
-        {{action "selectAnswer" model.id }}>A: {{model.answerA}}</li>
+        {{action "selectAnswer" model.id }}  {{action 'selectAnswer' model.id on="touchEnd" }}>A: {{model.answerA}}</li>
       <li class="list-group-item quiz-choice {{if selectedB "border border-info bg-light font-weight-bold"}}" id="B"
-        {{action "selectAnswer" model.id }}>B: {{model.answerB}}</li>
+        {{action "selectAnswer" model.id }} {{action 'selectAnswer' model.id on="touchEnd" }}>B: {{model.answerB}}</li>
       <li class="list-group-item quiz-choice {{if selectedC "border border-info bg-light font-weight-bold"}}" id="C"
-        {{action "selectAnswer" model.id }}>C: {{model.answerC}}</li>
+        {{action "selectAnswer" model.id }} {{action 'selectAnswer' model.id on="touchEnd" }}>C: {{model.answerC}}</li>
       <li class="list-group-item quiz-choice {{if selectedD "border border-info bg-light font-weight-bold"}}" id="D"
-        {{action "selectAnswer" model.id }}>D: {{model.answerD}}</li>
+        {{action "selectAnswer" model.id }} {{action 'selectAnswer' model.id on="touchEnd" }}>D: {{model.answerD}}</li>
     </ul>
 
   </div>
