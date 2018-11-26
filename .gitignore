@@ -17,6 +17,7 @@
 /npm-debug.log*
 /testem.log
 /yarn-error.log
+/firebase-adminsdk.json
 
 
 # ember-try
